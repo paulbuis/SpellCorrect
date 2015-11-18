@@ -3,6 +3,9 @@
 #
 # defines class Context and related utility functions
 #
+# Represents a word (or a proposed replacement) from a document with along with its
+# context of surrounding words. The context can be evaluated as a probability and
+# then the probabilities of all proposed replacements can be compared
 
 
 def concat_with_space2(t):
@@ -23,7 +26,6 @@ def concat_with_space3(t):
     result = a + ' ' + b + ' ' + c
     # assert isinstance(result, str)
     return result
-
 
 
 class Context:
