@@ -1,4 +1,3 @@
-This is a test.
-This is only a test.
-If this were a real emergency.
-We would all be running and screaming.
+This is a test. This is only a $0.01
+test. It    isn't real8.
+If this were a real emergency, I'd scream, "Help!" (aren't you glad it is just a test?).

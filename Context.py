@@ -9,6 +9,8 @@
 
 
 def concat_with_space2(t):
+    if t is None:
+        return None
     assert isinstance(t, tuple)
     a, b = t
     if (not isinstance(a, str)) or (not isinstance(b, str)):
@@ -19,6 +21,8 @@ def concat_with_space2(t):
 
 
 def concat_with_space3(t):
+    if t is None:
+        return None
     assert isinstance(t, tuple)
     a, b, c = t
     if (not isinstance(a, str)) or (not isinstance(b, str)) or (not isinstance(c, str)):
@@ -32,16 +36,11 @@ class Context:
     def __init__(self, word, two_gram_pre, two_gram_post, three_gram_centered, three_gram_pre, three_gram_post):
         assert(word is not None)
         assert(isinstance(word, str))
-        assert(two_gram_pre is not None)
-        assert(isinstance(two_gram_pre, tuple))
-        assert(two_gram_post is not None)
-        assert(isinstance(two_gram_post, tuple))
-        assert(three_gram_centered is not None)
-        assert(isinstance(three_gram_centered, tuple))
-        assert(three_gram_pre is not None)
-        assert(isinstance(three_gram_pre, tuple))
-        assert(three_gram_post is not None)
-        assert(isinstance(three_gram_post, tuple))
+        assert ((two_gram_pre is None) or isinstance(two_gram_pre, tuple))
+        assert ((two_gram_post is None) or isinstance(two_gram_post, tuple))
+        assert ((three_gram_centered is None) or isinstance(three_gram_centered, tuple))
+        assert ((three_gram_pre is None) or isinstance(three_gram_pre, tuple))
+        assert ((three_gram_post is None) or isinstance(three_gram_post, tuple))
         self.word = word
         self.two_gram_pre = two_gram_pre
         self.two_gram_post = two_gram_post
@@ -53,20 +52,29 @@ class Context:
         result = concat_with_space2(self.two_gram_pre)
         if result is None:
             return ''
-        else:
-            return result
+        return result
 
     def two_gram_post_str(self):
+        if self.two_gram_post is None:
+            return ''
         return concat_with_space2(self.two_gram_post)
 
     def three_gram_centered_str(self):
+        if self.three_gram_centered is None:
+            return ''
         return concat_with_space3(self.three_gram_centered)
 
     def three_gram_pre_str(self):
-        return concat_with_space3(self.three_gram_pre)
+        result = concat_with_space3(self.three_gram_pre)
+        if result is None:
+            return ''
+        return result
 
     def three_gram_post_str(self):
-        return concat_with_space3(self.three_gram_post)
+        result = concat_with_space3(self.three_gram_post)
+        if result is None:
+            return ''
+        return result
 
     def __str__(self):
         two_pre = self.two_gram_pre_str()
